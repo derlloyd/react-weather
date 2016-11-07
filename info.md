@@ -22,3 +22,8 @@ webpack ./public/app.js ./public/bundle.js
 var {Route, Router, IndexRoute, hashHistory} = require ('react-router');
 // object destructuring
 // same as var Route = require(react-router).Route
+
+openWeatherMap key 65f552da8ce77e3ed6d5e8c193c6355f
+
+http://api.openweathermap.org/data/2.5/find?q=London,uk&units=imperial&appid=65f552da8ce77e3ed6d5e8c193c6355f
+
