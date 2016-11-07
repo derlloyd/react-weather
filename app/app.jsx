@@ -4,8 +4,8 @@ var {Route, Router, IndexRoute, hashHistory} = require ('react-router');
 
 var Main = require('Main');
 var Weather = require('Weather');
-var WeatherForm = require('WeatherForm');
-var WeatherMessage = require('WeatherMessage');
+// var WeatherForm = require('WeatherForm');
+// var WeatherMessage = require('WeatherMessage');
 var About = require('About');
 var Examples = require('Examples');
 
