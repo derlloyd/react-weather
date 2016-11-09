@@ -11,7 +11,10 @@ var React = require('react');
 // can only refactor this stateless functional component with only Render method
 var About = (props) => {
     return (
-        <h3>About component</h3>
+        <div>
+            <h3>About component</h3>
+            <p>welcome to the about page</p>
+        </div>
     )
 };
 
