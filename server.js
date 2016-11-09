@@ -2,11 +2,11 @@ var express = require('express');
 
 // create app
 var app = express();
-const PORT = process.env.port || 3000
+const PORT = process.env.PORT || 3000
 
 // express middleware
 // openWeatherMap only works on http NOT https, so need to redirect all https to http
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
     if (req.headers['x-forwarded-proto'] === 'http') {
         // call next when middleware done
         next();
