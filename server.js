@@ -6,14 +6,14 @@ const PORT = process.env.PORT || 3000
 
 // express middleware
 // openWeatherMap only works on http NOT https, so need to redirect all https to http
-// app.use(function(req, res, next) {
-//     if (req.headers['x-forwarded-proto'] === 'http') {
-//         // call next when middleware done
-//         next();
-//     } else {
-//         res.redirect('http://' + req.hostname + req.url);
-//     }
-// });
+app.use(function(req, res, next) {
+    if (req.headers['x-forwarded-proto'] === 'https') {
+        res.redirect('http://' + req.hostname + req.url);
+    } else {
+        // call next when middleware done
+        next();
+    }
+});
 
 // which folder to serve
 app.use(express.static('public'));
