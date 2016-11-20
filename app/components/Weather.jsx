@@ -1,58 +1,47 @@
-var React = require('react');
+import React, { Component } from 'react';
+import WeatherForm from './WeatherForm';
+import WeatherMessage from './WeatherMessage';
+import openWeatherMap from '../api/openWeatherMap';
 
-var WeatherForm = require('WeatherForm');
-var WeatherMessage = require('WeatherMessage');
-var openWeatherMap = require('openWeatherMap');
+class Weather extends Component {
+    state = { isLoading: false };
 
-var Weather = React.createClass({
-    getInitialState: function() {
-        return {
-            isLoading: false
-        };
-    },
-    handleSearch: function(location) {
-        var that = this;
-        
-        // debugger;
-        this.setState({isLoading: true});
+    handleSearch(location) {
+        this.setState({ isLoading: true });
 
-        openWeatherMap.getTemp(location).then(function(temp) {
-            that.setState({
-                isLoading: false,
-                location: location,
-                temp: temp
+        openWeatherMap.getTemp(location)
+            .then((result) => {
+                this.setState({
+                    isLoading: false,
+                    location: result.name || location,  // sometimes no result in name field
+                    temp: result.temp
+                });
+            }, (errorMessage) => {
+                alert(`City Name Error: ${errorMessage}`);
+                this.setState({ isLoading: false });
             });
+    }
 
-        }, function(errorMessage) {
-            // console.log(location)
-            alert(errorMessage);
-            that.setState({
-                isLoading: false
-            });
-        });
-
-    },
-    render: function() {
-        var {isLoading, temp, location} = this.state;
+    render() {
+        const { isLoading, temp, location } = this.state;
         
         function renderMessage() {
             if (isLoading) {
-                return <h3>Fetching Weather...</h3>
+                return <h3>Fetching Weather...</h3>;
             } else if (temp && location) {
-            // debugger;
-                return <WeatherMessage location={location} temp={temp}/>
+                return <WeatherMessage location={location} temp={temp} />;
             }
-        };
+        }
 
         return (
             <div>
                 <h3>Weather component</h3>
-                <WeatherForm onSearch={this.handleSearch}/>
+                <WeatherForm onSearch={this.handleSearch.bind(this)} />
                 {renderMessage()}
                 
             </div>
-        )
+        );
     }
-});
+}
 
-module.exports = Weather;
+export default Weather;

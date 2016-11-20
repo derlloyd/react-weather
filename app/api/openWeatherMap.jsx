@@ -12,7 +12,7 @@ module.exports = {
             if (res.data.cod != 200 && res.data.message != 'accurate') {
                 throw new Error(res.data.message);
             } else {
-                return res.data.list[0].main.temp; //, res.data.list[0].name;
+                return { temp: res.data.list[0].main.temp, name: res.data.list[0].name }; //, res.data.list[0].name;
             }
         }, function(res) {
             throw new Error(res.data.message);
