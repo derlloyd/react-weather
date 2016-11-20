@@ -1,15 +1,3 @@
-/*
-var React = require('react');
-var ReactDOM = require('react-dom');
-var {Route, Router, IndexRoute, hashHistory} = require ('react-router');
-
-var Main = require('Main');
-var Weather = require('Weather');
-// var WeatherForm = require('WeatherForm');
-// var WeatherMessage = require('WeatherMessage');
-var About = require('About');
-var Examples = require('Examples');
-*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Router, IndexRoute, hashHistory } from 'react-router';
@@ -20,11 +8,9 @@ import About from './components/About';
 import Weather from './components/Weather';
 import Examples from './components/Examples';
 
-
-
 // load foundation
 require('style!css!foundation-sites/dist/foundation.min.css');
-// $(document).foundation();
+$(document).foundation();
 
 ReactDOM.render(
     <Router history={hashHistory}>

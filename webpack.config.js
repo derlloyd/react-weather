@@ -13,7 +13,6 @@ module.exports = {
         new webpack.ProvidePlugin({
             '$': 'jquery',
             'jQuery': 'jquery'
-
         })
     ],
     output: {
@@ -48,5 +47,3 @@ module.exports = {
     },
     devtool: 'eval-source-map'
 };
-
-// exclude: /(node_modules|bower_components)/
